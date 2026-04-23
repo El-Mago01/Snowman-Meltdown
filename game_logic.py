@@ -4,12 +4,15 @@ import ascii_art as aa
 # List of secret words
 WORDS = ["python", "git", "github", "snowman", "meltdown"]
 
-def get_random_word():
+def get_random_word() -> str:
     """Selects a random word from the list."""
     return WORDS[random.randint(0, len(WORDS) - 1)]
 
 def display_dashes_and_chars(secret_word, correct_guessed_chars) -> bool:
-    """Displays dashes and character guesses."""
+    """
+    Displays dashes and character guesses.
+    Returns True if the secret word is guessed, False otherwise.
+    """
     word_guessed = True
     for char in secret_word:
         if char in correct_guessed_chars:
@@ -30,7 +33,8 @@ def play_game():
     Stage 1: Show the snowman
     Stage 2: Guess a letter
     Stage 3: feedback if the letter was guessed correctly and at what place the letter fits
-    
+    Stage 4: verify if the game is finished and if the player won or lost
+    Stage 5: Provide the player with an end message
 
     """
     secret_word = get_random_word()

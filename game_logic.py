@@ -35,23 +35,32 @@ def play_game():
     Stage 3: feedback if the letter was guessed correctly and at what place the letter fits
     Stage 4: verify if the game is finished and if the player won or lost
     Stage 5: Provide the player with an end message
-
     """
+
+    def get_character():
+        while True:
+            char=input("\nGuess a letter: ").lower().strip()
+            if len(char)==1:
+                if char.isalpha():
+                    return char
+            print("Wrong input, please enter a single alphabetic character.")
+
+
     secret_word = get_random_word()
     print("Welcome to Snowman Meltdown!")
-    print("Secret word selected: " + secret_word)  # for testing, later remove this line
+    # print("Secret word selected: " + secret_word)  # for testing, later remove this line
     mistakes=0
     correct_guessed_chars=[]
     display_game_state(mistakes, secret_word, correct_guessed_chars)
     game_won=False
     game_iteration=0
     while game_iteration < len(aa.STAGES)-1:
-        guess = input("Guess a letter: ").lower()
+        guess = get_character()
         print("You guessed:", guess)
-        print(game_iteration)
+        # print(game_iteration)
         if guess in secret_word and guess not in correct_guessed_chars:
             correct_guessed_chars.append(guess)
-            print(game_iteration)
+            # print(game_iteration)
         elif guess not in secret_word:
             mistakes += 1
             game_iteration += 1

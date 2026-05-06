@@ -80,7 +80,7 @@ def play_game():
             game_iteration += 1
         else:
             print("You already correctly guessed this letter, no consequences!")
-        print(game_iteration)
+        # print(game_iteration)
         game_won=display_game_state(mistakes,secret_word,guessed_chars)
         if game_won:
             break
